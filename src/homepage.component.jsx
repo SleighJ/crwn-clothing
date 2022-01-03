@@ -1,6 +1,7 @@
 import React from 'react'
 
 import './homepage.styles.scss'
+//silly comment
 
 const HomePage = () => (
   <div className="homepage">
