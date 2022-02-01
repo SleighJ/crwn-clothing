@@ -3,8 +3,6 @@ import { Switch, Route } from 'react-router-dom'
 
 import './App.css';
 
-import {AuthContext} from './pages/auth/auth.context'
-
 import HomePage from './pages/homepage/homepage.component'
 import ShopPage from './pages/shop/shop.component'
 import AuthPage from './pages/auth/auth-page.component'
@@ -19,9 +17,7 @@ function App() {
      <Switch>
         <Route exact path='/' component={HomePage} />
         <Route path='/shop' component={ShopPage} />
-        {/* <AuthContext.Consumer> */}
         <Route path='/signin' component={AuthPage} />
-        {/* </AuthContext.Consumer> */}
       </Switch>
    </div>
   )
