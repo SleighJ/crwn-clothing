@@ -6,8 +6,8 @@ const SignUp = () => {
   // const authUpdate = useAuthUpdate()
 
   return (
-    <div >
-      Sign Up
+    <div className='sign-up-container'>
+      {/* Sign Up */}
     </div>
   )
 

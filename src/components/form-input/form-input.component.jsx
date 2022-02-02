@@ -8,7 +8,6 @@ const FormInput = ({
   ...restProps 
 }) => (
   <div className='group'>
-    {console.log(label)}
     <input
       className='form-input'
       onChange={handleChange}

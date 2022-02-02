@@ -2,6 +2,9 @@ import React from 'react'
 import { useAuth } from './auth.context'
 
 import FormInput from '../../components/form-input/form-input.component'
+import CustomButton from '../../components/custom-button/custom-button.component'
+
+import './sign-in.styles.scss'
 
 const SignIn = () => {
   const { 
@@ -18,6 +21,7 @@ const SignIn = () => {
       <span>Sign in with your email and password</span>
       <form>
         <FormInput 
+          name='email'
           label='email' 
           type='email'
           value={userEmail}
@@ -25,13 +29,20 @@ const SignIn = () => {
           required
         />
         <FormInput
+          name='password'
           label='password'
           type='password'
           value={userPassword}
           handleChange={(e) => setUserPassword(e.target.value)}
           required
         />
-        <input onClick={(e)=>handleSubmit(e)} type='submit' value='Submit Form' />
+        <CustomButton
+          type='submit'
+          handleClick={(e) => handleSubmit(e)}
+        >
+          { 'Submit Form' }
+        </CustomButton>
+        {/* <input onClick={(e)=>handleSubmit(e)} type='submit' value='Submit Form' /> */}
       </form>
     </div>
   )
