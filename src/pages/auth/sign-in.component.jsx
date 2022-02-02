@@ -17,25 +17,24 @@ const SignIn = () => {
       <h2>I already have an account</h2>
       <span>Sign in with your email and password</span>
       <form>
-        <label>Email</label>
         <FormInput 
-          name='email' 
+          label='email' 
           type='email'
           value={userEmail}
-          onChange={(e) => setUserEmail(e.target.value)}
+          handleChange={(e) => setUserEmail(e.target.value)}
+          required
         />
-        <label>Password</label>
         <FormInput
-          name='password'
+          label='password'
           type='password'
           value={userPassword}
-          onChange={(e) => setUserPassword(e.target.value)}
+          handleChange={(e) => setUserPassword(e.target.value)}
+          required
         />
         <input onClick={(e)=>handleSubmit(e)} type='submit' value='Submit Form' />
       </form>
     </div>
   )
-
 }
 
 export default SignIn
