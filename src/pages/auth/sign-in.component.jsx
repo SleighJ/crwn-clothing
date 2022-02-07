@@ -40,9 +40,8 @@ const SignIn = () => {
           type='submit'
           handleClick={(e) => handleSubmit(e)}
         >
-          { 'Submit Form' }
+          { 'Sign In' }
         </CustomButton>
-        {/* <input onClick={(e)=>handleSubmit(e)} type='submit' value='Submit Form' /> */}
       </form>
     </div>
   )

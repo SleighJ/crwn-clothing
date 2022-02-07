@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
     setUserEmail('')
     setUserPassword('')
   }
-
+  
   return (
     <AuthContext.Provider 
       value={{ 
