@@ -5,7 +5,7 @@ import FormInput from '../../components/form-input/form-input.component'
 import CustomButton from '../../components/custom-button/custom-button.component'
 
 // Google sign-in method
-import { signInWithCredential } from 'firebase/auth'
+import { signInWithGoogle } from '../../firebase/firebase.utils'
 
 import './sign-in.styles.scss'
 
@@ -39,17 +39,20 @@ const SignIn = () => {
           handleChange={(e) => setUserPassword(e.target.value)}
           required
         />
-        <CustomButton
-          type='submit'
-          handleClick={(e) => handleSubmit(e)}
-        >
-          { 'Sign In' }
-        </CustomButton>
-        <CustomButton
-          handleClick={signInWithCredential}
-        >
-          { 'Sign In With Google' }
-        </CustomButton>
+        <div className='buttons'>
+          <CustomButton
+            type='submit'
+            handleClick={(e) => handleSubmit(e)}
+          >
+            { 'Sign In' }
+          </CustomButton>
+          <CustomButton
+            handleClick={signInWithGoogle}
+            isGoogleSignIn
+          >
+            { 'Sign In With Google' }
+          </CustomButton>
+        </div>
       </form>
     </div>
   )
