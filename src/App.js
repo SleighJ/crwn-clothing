@@ -9,24 +9,24 @@ import AuthPage from './pages/auth/auth-page.component'
 
 import Header from './components/header/header.component'
 
-import { auth, createUserProfileDocument } from './firebase/firebase.utils'
+// import { auth, createUserProfileDocument } from './firebase/firebase.utils'
 
 const App = () => {
   const [ currentUser, setCurrentUser ] = useState(null)
 
-  let unsubscribeFromAuth = null
+  // let unsubscribeFromAuth = null
 
   // on mount
-  useEffect(() => {
-    unsubscribeFromAuth = auth.onAuthStateChanged(async user => createUserProfileDocument(user))
-  }, [])
+  // useEffect(() => {
+  //   unsubscribeFromAuth = auth.onAuthStateChanged(async user => createUserProfileDocument(user))
+  // }, [])
 
-  // on dismount
-  useLayoutEffect(() => {
-    if (unsubscribeFromAuth) {
-      unsubscribeFromAuth()
-    }
-  }, [])
+  // // on dismount
+  // useLayoutEffect(() => {
+  //   if (unsubscribeFromAuth) {
+  //     unsubscribeFromAuth()
+  //   }
+  // }, [])
 
   return (
    <div>

@@ -5,7 +5,7 @@ import FormInput from '../../components/form-input/form-input.component'
 import CustomButton from '../../components/custom-button/custom-button.component'
 
 // Google sign-in method
-import { signInWithGoogle } from '../../firebase/firebase.utils'
+import { signInWithGooglePopUp, createUserDocumentFromAuth } from '../../firebase/firebase.utils'
 
 import './sign-in.styles.scss'
 
@@ -17,6 +17,12 @@ const SignIn = () => {
     setUserPassword,
     handleSubmit
   } = useAuth()
+
+  const logGoogleUser = async () => {
+    const { user } = await signInWithGooglePopUp()
+    const userDocRef = createUserDocumentFromAuth(user)
+    console.log(userDocRef)
+  }
 
   return (
     <div className='sign-in'>
@@ -47,7 +53,7 @@ const SignIn = () => {
             { 'Sign In' }
           </CustomButton>
           <CustomButton
-            handleClick={signInWithGoogle}
+            handleClick={logGoogleUser}
             isGoogleSignIn
           >
             { 'Sign In With Google' }
