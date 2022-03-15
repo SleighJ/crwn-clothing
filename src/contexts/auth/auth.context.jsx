@@ -30,15 +30,21 @@ export const AuthProvider = ({ children }) => {
 
   //TODO
   const handleSubmit = async (event) => {
-    event.preventDefault();
     // if password matches confirmPassword, there is a display name and there is a valid email
-    createAuthUserWithEmailAndPassword(email, password)
+    try {
+      const createdUser = await createAuthUserWithEmailAndPassword(email, password)
+      console.log('createdUser ', createdUser)
+      return createdUser
+    } catch (error) {
+      console.log('error creating user ', error)
+    }
   }
 
   return (
     <AuthContext.Provider 
       value={{ 
         handleChange,
+        handleSubmit,
         displayName,
         email,
         password,

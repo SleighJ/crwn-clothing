@@ -3,20 +3,44 @@ import { useAuth } from '../../contexts/auth/auth.context'
 
 import FormInput from '../../components/form-input/form-input.component'
 import CustomButton from '../../components/custom-button/custom-button.component'
+import { createAuthUserWithEmailAndPassword } from '../../firebase/firebase.utils'
 
 const SignUpForm = () => {
   const { 
     handleChange,
+    handleSubmit,
     displayName,
     email,
     password,
     confirmPassword
   } = useAuth()
 
+  const handleFormSubmit = async (e) => {
+    e.preventDefault()
+    
+    if (password !== confirmPassword) {
+      alert('passwords do not match')
+      return
+    }
+    
+    try {
+      const response = await createAuthUserWithEmailAndPassword(
+        email,
+        password
+      )
+      console.log(response)
+    } catch (error) {
+      console.log('error in sign up form component ', error)
+    }
+
+    // const createdUser = await handleSubmit()
+    // console.log(createdUser)
+  }
+
   return (
      <>
        <span>Sign in with your email and password</span>
-        <form>
+        <form onSubmit={handleFormSubmit}>
           <FormInput 
             name='displayName'
             label='user name' 
@@ -49,6 +73,9 @@ const SignUpForm = () => {
             onChange={handleChange}
             required
           />
+          <CustomButton type='submit'>
+            Submit
+          </CustomButton>
           {/* <div className='buttons'>
             <CustomButton
               type='submit'
