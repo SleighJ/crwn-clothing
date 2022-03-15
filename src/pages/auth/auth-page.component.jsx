@@ -1,15 +1,13 @@
 import React from 'react'
 
-import { AuthProvider } from './auth.context'
+import { AuthProvider } from '../../contexts/auth/auth.context'
 
 import SignIn from './sign-in.component'
-import SignUp from './sign-up.component'
 
 const AuthPage = () => {
   return (
     <AuthProvider>
       <SignIn />
-      <SignUp />
     </AuthProvider>
   )
 }

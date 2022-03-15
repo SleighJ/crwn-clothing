@@ -15,7 +15,7 @@ const FormInput = ({
     />
     { label ? 
       <label 
-        className={`${restProps.value.length ? 'shrink' : '' } form-input-label`}
+        className={`${ restProps.value || restProps.length ? 'shrink' : '' } form-input-label`}
       >
         {label}
       </label>
