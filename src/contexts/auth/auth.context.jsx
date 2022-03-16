@@ -16,6 +16,7 @@ const defaultFormFields = {
 
 export const AuthProvider = ({ children }) => {
   const [ formFields, setFormFields ] = useState(defaultFormFields)
+  const [ error, setError ] = useState(null)
   const {
     displayName,
     email,
@@ -36,7 +37,9 @@ export const AuthProvider = ({ children }) => {
       console.log('createdUser ', createdUser)
       return createdUser
     } catch (error) {
-      console.log('error creating user ', error)
+      console.error('error creating user ', error)
+      setError(error.code)
+      return error
     }
   }
 
@@ -48,7 +51,9 @@ export const AuthProvider = ({ children }) => {
         displayName,
         email,
         password,
-        confirmPassword
+        confirmPassword,
+        setError,
+        error
       }}
     >
         { children }

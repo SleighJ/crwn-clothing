@@ -1,45 +1,39 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useAuth } from '../../contexts/auth/auth.context'
 
 import FormInput from '../../components/form-input/form-input.component'
 import CustomButton from '../../components/custom-button/custom-button.component'
-import { createAuthUserWithEmailAndPassword } from '../../firebase/firebase.utils'
 
 const SignUpForm = () => {
+  const [ loading, setLoading ] = useState(false)
   const { 
     handleChange,
     handleSubmit,
     displayName,
     email,
     password,
-    confirmPassword
+    confirmPassword,
+    setError,
+    error
   } = useAuth()
 
   const handleFormSubmit = async (e) => {
     e.preventDefault()
     
     if (password !== confirmPassword) {
-      alert('passwords do not match')
+      setError('password does not match confirm password')
       return
     }
     
-    try {
-      const response = await createAuthUserWithEmailAndPassword(
-        email,
-        password
-      )
-      console.log(response)
-    } catch (error) {
-      console.log('error in sign up form component ', error)
-    }
-
-    // const createdUser = await handleSubmit()
-    // console.log(createdUser)
+    setLoading(true)
+    await handleSubmit()
+    setLoading(false)
   }
 
   return (
      <>
        <span>Sign in with your email and password</span>
+       { error ? <span className='error'>*{error}</span> : null }
         <form onSubmit={handleFormSubmit}>
           <FormInput 
             name='displayName'
@@ -74,7 +68,7 @@ const SignUpForm = () => {
             required
           />
           <CustomButton type='submit'>
-            Submit
+            { loading ? 'Loading..' : 'Submit' }
           </CustomButton>
           {/* <div className='buttons'>
             <CustomButton
