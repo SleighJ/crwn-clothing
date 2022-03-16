@@ -1,26 +1,25 @@
 import React from 'react'
-
+// context
 import { useAuth } from '../../contexts/auth/auth.context'
-
+// components
 import FormInput from '../../components/form-input/form-input.component'
 import CustomButton from '../../components/custom-button/custom-button.component'
-
+// firebase utils
 import { 
   signInWithGooglePopUp, 
   createUserDocumentFromAuth 
 } from '../../firebase/firebase.utils'
+//styles
+import './sign-in-form.styles.scss'
 
 const SignInForm = () => {
   
   const { 
     handleChange,
     handleSubmit,
-    displayName,
     email,
     password,
-    confirmPassword,
-    setError,
-    error
+    error,
   } = useAuth()
 
   const logGoogleUser = async () => {
@@ -30,7 +29,9 @@ const SignInForm = () => {
 
   return (
      <div className='sign-in'>
+       <h2>Sign into your account</h2>
        <span>Sign in with your email and password</span>
+       { error ? <span className='error'>*{error}</span> : null }
         <form>
           <FormInput 
             name='email'
@@ -51,7 +52,7 @@ const SignInForm = () => {
           <div className='buttons'>
             <CustomButton
               type='submit'
-              handleClick={(e) => handleSubmit(e)}
+              handleClick={(e) => alert('not ready yet')}
             >
               { 'Sign In' }
             </CustomButton>

@@ -1,13 +1,16 @@
 import React from 'react'
+import { AuthProvider } from '../../contexts/auth/auth.context'
 import SignInForm from '../../forms/sign-in/sign-in-form.component'
 import SignUpForm from '../../forms/sign-up/sign-up-form.component'
-import './sign-in.styles.scss'
+import './authentication.styles.scss'
 
 const SignIn = () => {
   return (
-    <div className='sign-in-sign-up'>
-      <SignInForm />
-      <SignUpForm />
+    <div className='authentication'>
+      <AuthProvider>
+        <SignInForm />
+        <SignUpForm />
+      </AuthProvider>
     </div>
   )
 }

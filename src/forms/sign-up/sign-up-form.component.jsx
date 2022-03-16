@@ -4,6 +4,8 @@ import { useAuth } from '../../contexts/auth/auth.context'
 import FormInput from '../../components/form-input/form-input.component'
 import CustomButton from '../../components/custom-button/custom-button.component'
 
+import './sign-up-form.styles.scss'
+
 const SignUpForm = () => {
   const [ loading, setLoading ] = useState(false)
   const { 
@@ -31,9 +33,9 @@ const SignUpForm = () => {
   }
 
   return (
-     <div className='sign-in'>
+     <div className='sign-up'>
       <h2>Don't have an account?</h2>
-      <span>Sign in with your email and password</span>
+      <span>Sign up with your email and password</span>
        { error ? <span className='error'>*{error}</span> : null }
         <form onSubmit={handleFormSubmit}>
           <FormInput 
