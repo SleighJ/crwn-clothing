@@ -31,7 +31,7 @@ const SignUpForm = () => {
   }
 
   return (
-     <>
+     <div className='sign-in'>
       <h2>Don't have an account?</h2>
       <span>Sign in with your email and password</span>
        { error ? <span className='error'>*{error}</span> : null }
@@ -75,7 +75,7 @@ const SignUpForm = () => {
             { loading ? 'Loading..' : 'Submit' }
           </CustomButton>
         </form>
-     </>
+     </div>
   )
 }
 

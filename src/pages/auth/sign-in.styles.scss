@@ -1,8 +1,16 @@
+.sign-in-sign-up {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+//TODO: Move into new scss file for sign-in component
 .sign-in {
   width: 380px;
   display: flex;
   flex-direction: column;
-
+  
   .title {
     margin: 10px 0;
   }

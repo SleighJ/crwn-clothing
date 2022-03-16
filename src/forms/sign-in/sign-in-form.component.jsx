@@ -11,12 +11,16 @@ import {
 } from '../../firebase/firebase.utils'
 
 const SignInForm = () => {
+  
   const { 
-    userEmail,
-    setUserEmail,
-    userPassword,
-    setUserPassword,
-    handleSubmit
+    handleChange,
+    handleSubmit,
+    displayName,
+    email,
+    password,
+    confirmPassword,
+    setError,
+    error
   } = useAuth()
 
   const logGoogleUser = async () => {
@@ -25,32 +29,24 @@ const SignInForm = () => {
   }
 
   return (
-     <>
+     <div className='sign-in'>
        <span>Sign in with your email and password</span>
         <form>
-          <FormInput 
-            name='displayName'
-            label='user name' 
-            type='text'
-            // value={userEmail}
-            // handleChange={(e) => setUserEmail(e.target.value)}
-            required
-          />
           <FormInput 
             name='email'
             label='email' 
             type='email'
-            // value={userEmail}
-            // handleChange={(e) => setUserEmail(e.target.value)}
+            value={email}
+            handleChange={handleChange}
             required
           />
           <FormInput
             name='password'
             label='password'
             type='password'
-            // value={userPassword}
-            // handleChange={(e) => setUserPassword(e.target.value)}
-            // required
+            value={password}
+            handleChange={handleChange}
+            required
           />
           <div className='buttons'>
             <CustomButton
@@ -67,7 +63,7 @@ const SignInForm = () => {
             </CustomButton>
           </div>
         </form>
-     </>
+     </div>
   )
 }
 
