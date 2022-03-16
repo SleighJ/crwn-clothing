@@ -32,7 +32,8 @@ const SignUpForm = () => {
 
   return (
      <>
-       <span>Sign in with your email and password</span>
+      <h2>Don't have an account?</h2>
+      <span>Sign in with your email and password</span>
        { error ? <span className='error'>*{error}</span> : null }
         <form onSubmit={handleFormSubmit}>
           <FormInput 
