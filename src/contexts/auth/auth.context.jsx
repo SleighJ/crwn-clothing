@@ -1,5 +1,8 @@
 import React, { useState, useContext, createContext } from 'react'
-import { createAuthUserWithEmailAndPassword } from '../../firebase/firebase.utils'
+import { 
+  createAuthUserWithEmailAndPassword, 
+  createUserDocumentFromAuth 
+} from '../../firebase/firebase.utils'
 
 const AuthContext = createContext()
 
@@ -24,22 +27,33 @@ export const AuthProvider = ({ children }) => {
     confirmPassword
   } = formFields
 
+  const resetFormFields = () => {
+    setFormFields(defaultFormFields)
+  }
+
+  const resetErrorState = () => {
+    setError(null)
+  }
+
+  // Google O-auth
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value })
   }
 
-  //TODO
+  // Firebase sign up with email and password
   const handleSubmit = async (event) => {
-    // if password matches confirmPassword, there is a display name and there is a valid email
     try {
-      const createdUser = await createAuthUserWithEmailAndPassword(email, password)
-      console.log('createdUser ', createdUser)
-      return createdUser
+      const { user } = await createAuthUserWithEmailAndPassword(
+        email, 
+        password
+      )
+      await createUserDocumentFromAuth(user, { displayName })
+      resetFormFields()
+      resetErrorState()
     } catch (error) {
       console.error('error creating user ', error)
       setError(error.code)
-      return error
     }
   }
 

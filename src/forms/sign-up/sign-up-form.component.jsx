@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useAuth } from '../../contexts/auth/auth.context'
 
 import FormInput from '../../components/form-input/form-input.component'
@@ -67,23 +67,12 @@ const SignUpForm = () => {
             onChange={handleChange}
             required
           />
-          <CustomButton type='submit'>
+          <CustomButton
+            onClick={() => {}} 
+            type='submit'
+          >
             { loading ? 'Loading..' : 'Submit' }
           </CustomButton>
-          {/* <div className='buttons'>
-            <CustomButton
-              type='submit'
-              handleClick={(e) => handleSubmit(e)}
-            >
-              { 'Sign In' }
-            </CustomButton>
-            <CustomButton
-              handleClick={logGoogleUser}
-              isGoogleSignIn
-            >
-              { 'Sign In With Google' }
-            </CustomButton>
-          </div> */}
         </form>
      </>
   )
