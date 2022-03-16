@@ -10,7 +10,7 @@ const SignUpForm = () => {
   const [ loading, setLoading ] = useState(false)
   const { 
     handleChange,
-    handleSubmit,
+    handleSubmitNewUser,
     displayName,
     email,
     password,
@@ -28,7 +28,7 @@ const SignUpForm = () => {
     }
     
     setLoading(true)
-    await handleSubmit()
+    await handleSubmitNewUser()
     setLoading(false)
   }
 

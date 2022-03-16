@@ -16,15 +16,22 @@ const SignInForm = () => {
   
   const { 
     handleChange,
-    handleSubmit,
+    handleSubmitSignIn,
     email,
     password,
     error,
   } = useAuth()
 
+  // TODO: move to context
   const logGoogleUser = async () => {
     const { user } = await signInWithGooglePopUp()
     const userDocRef = createUserDocumentFromAuth(user)
+  }
+
+  const handleSubmitForm = async (e) => {
+    e.preventDefault()
+    const user = await handleSubmitSignIn()
+    console.log(user)
   }
 
   return (
@@ -32,7 +39,7 @@ const SignInForm = () => {
        <h2>Sign into your account</h2>
        <span>Sign in with your email and password</span>
        { error ? <span className='error'>*{error}</span> : null }
-        <form>
+        <form onSubmit={handleSubmitForm}>
           <FormInput 
             name='email'
             label='email' 
@@ -52,7 +59,7 @@ const SignInForm = () => {
           <div className='buttons'>
             <CustomButton
               type='submit'
-              handleClick={(e) => alert('not ready yet')}
+              handleClick={() => {}}
             >
               { 'Sign In' }
             </CustomButton>
